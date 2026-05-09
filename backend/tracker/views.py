@@ -43,3 +43,13 @@ class SummaryView(APIView):
             'total_hours':total_hours,
             'most_active_user':most_active['name'] if most_active else None
         })
+        
+class ActivityDeleteView(APIView):
+    def delete(self,request,pk):
+        try:
+            activity = Activity.objects.get(pk=pk)
+            
+        except Activity.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        activity.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

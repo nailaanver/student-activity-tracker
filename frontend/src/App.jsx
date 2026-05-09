@@ -44,7 +44,10 @@ function App() {
 
             <Summary summary={summary} />
 
-            <ActivityList activities={activities} />
+            <ActivityList
+    activities={activities}
+    refreshActivities={fetchActivities}
+/>
         </div>
     );
 }
