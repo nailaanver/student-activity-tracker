@@ -18,6 +18,17 @@ function ActivityForm({ refreshActivities, refreshSummary }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (
+            !formData.name ||
+            !formData.activity ||
+            !formData.hours
+        ) {
+
+            alert("All fields are required");
+
+            return;
+        }
+
         try {
             await addActivity(formData);
 
